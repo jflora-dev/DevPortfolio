@@ -17,6 +17,7 @@ interface ProfileData {
   description: string;
   descriptionHtml: string;
   resumeUrl: string;
+  resumeUrlITA: string;
   jobTitle?: string;
   location?: string;
   availability?: string;
@@ -41,7 +42,7 @@ if (isApiLive && BASE_URL) {
   data = localData as ProfileData;
 }
 
-const { name, photoUrl, description, descriptionHtml, resumeUrl, jobTitle, location, availability, socials } = data;
+const { name, photoUrl, description, descriptionHtml, resumeUrl, resumeUrlITA, jobTitle, location, availability, socials } = data;
 const profileImage = await resolveAssetImage(photoUrl);
 ---
 
@@ -127,7 +128,7 @@ const profileImage = await resolveAssetImage(photoUrl);
     >
       <div class="flex flex-col items-center justify-center text-center">
         <span class="tracking-wide text-sm md:text-base font-medium transition-transform duration-300 md:translate-y-2 md:group-hover:translate-y-0">
-          View Resume
+          View Resume &#127468;&#127463;
         </span>
         
         <span class="text-[10px] text-subtext font-light whitespace-nowrap transition-all duration-300 
@@ -136,6 +137,36 @@ const profileImage = await resolveAssetImage(photoUrl);
                      /* Desktop: Hidden until hover */
                      md:opacity-0 md:translate-y-1 md:group-hover:opacity-100 md:group-hover:translate-y-0">
           Opens in Google Drive
+        </span>
+      </div>
+      
+      <div class="absolute inset-0 rounded-full blur-md bg-accent/20 -z-10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
+    </a>
+
+    <a 
+      href={resumeUrlITA} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="group relative inline-flex items-center justify-center px-10 py-2 bg-white/5 border border-white/10 rounded-full text-maintext font-body transition-all duration-300
+
+             <!-- /* Mobile: Always active */ -->
+             border-accent/50 bg-accent/10 shadow-[0_0_20px_rgba(var(--accent-rgb),0.3)]
+             
+             <!-- /* Desktop: Reset and hover */ -->
+             md:border-accent/50 md:bg-accent/10 md:shadow-none md:hover:border-accent/50 md:hover:bg-accent/10 md:hover:shadow-[0_0_20px_rgba(var(--accent-rgb),0.3)] 
+             hover:scale-105"
+    >
+      <div class="flex flex-col items-center justify-center text-center">
+        <span class="tracking-wide text-sm md:text-base font-medium transition-transform duration-300 md:translate-y-2 md:group-hover:translate-y-0">
+          View Resume &#x1F1EE;&#127481;
+        </span>
+        
+        <span class="text-[10px] text-subtext font-light whitespace-nowrap transition-all duration-300 
+                     /* Mobile: Always visible */
+                     opacity-100 translate-y-0 
+                     /* Desktop: Hidden until hover */
+                     md:opacity-0 md:translate-y-1 md:group-hover:opacity-100 md:group-hover:translate-y-0">
+          Si apre in Google Drive
         </span>
       </div>
       
@@ -171,6 +202,10 @@ const profileImage = await resolveAssetImage(photoUrl);
     transform: translateY(20px);
     animation: revealIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   }
+
+  /* .resume-gap {
+    gap: 10px,
+  } */
 
   @keyframes revealIn {
     to {
